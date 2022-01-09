@@ -39,6 +39,7 @@ const usersRoutes = require("./routes/users");
 const registerRoutes = require("./routes/register");
 const userResourcesRoutes = require("./routes/user_resources");
 const widgetsRoutes = require("./routes/widgets");
+const register = require("./routes/register");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -68,6 +69,34 @@ const getUserWithEmail = function (email) {
     });
 };
 
+const getUserWithUsername = function (username) {
+  return db
+    .query("SELECT * FROM users WHERE username = $1", [username])
+    .then((result) => result.rows[0])
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+const addUser = function (user) {
+  return db
+    .query(
+      `INSERT INTO users (first_name,last_name,username,email,password)
+   VALUES ($1, $2, $3, $4, $5) RETURNING id,first_name,last_name,username,email;`,
+      [
+        user["first_name"],
+        user["last_name"],
+        user["username"],
+        user["email"],
+        user["password"],
+      ]
+    )
+    .then((result) => console.log(result.rows[0]))
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
 const login = function (email, password) {
   return getUserWithEmail(email).then((user) => {
     if (password === user.password) {
@@ -92,6 +121,17 @@ app.post("/login", (req, res) => {
 
 app.get("/register", (req, res) => {
   res.render("register");
+});
+
+app.post("/register", (req, res) => {
+  const user = req.body;
+  console.log(req.body);
+  if (getUserWithEmail(user.email) || getUserWithUsername(user.username)) {
+    console.log("user already in system");
+    res.redirect("/login");
+  } else {
+    addUser(user).then(() => res.redirect("/"));
+  }
 });
 
 app.get("/user/:id", (req, res) => {
