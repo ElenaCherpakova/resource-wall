@@ -1,0 +1,87 @@
+.resource-img {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+
+.card-deck {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  display: flex;
+  padding: 0.5rem;
+  margin: 1.5rem;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  background-color: white;
+}
+
+.card:hover {
+  box-shadow: 10px 10px gray;
+}
+
+.card-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  width: 100%;
+  height: 3em;
+  background-color: black;
+  font-size: bold;
+  font-family: Titillium Web;
+}
+
+.far:hover {
+  color: #d9d4d1;
+}
+
+.far{
+  width: 100%;
+}
+
+.tag {
+  color: gray;
+}
+
+.card-title {
+  color: black;
+  width: 100%;
+  font-size: 200%;
+  font-weight: bold;
+  font-family: Titillium Web;
+}
+
+.main-title {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  font-size: 300%;
+  font-family: Titillium Web;
+}
+
+.card-text {
+  font-family: Titillium Web;
+}
+
+.loadMore-btn {
+  width: 30%;
+  font-family: Titillium Web;
+  font-weight: bold;
+  font-size: 200%;
+}
+
+#loadMore {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
