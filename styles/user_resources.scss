@@ -1,0 +1,38 @@
+#main-content-resources{
+  display: flex;
+}
+
+#vertical-list-options {
+  margin-top: 2rem;
+  margin-left: 2rem;
+  color: white;
+  font-family: Titillium Web;
+  order: 0;
+  flex-grow: 1;
+  align-self: flex-start;
+}
+
+#user-resources {
+  margin-top: 2rem;
+  flex-grow: 3;
+}
+
+.list-group-item {
+  color:white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.list-group:hover {
+  box-shadow: 10px 10px gray;
+  border-color:  black;
+}
+
+a:link {
+  color: grey;
+}
+
+a:visited {
+  color: grey;
+  font-weight: bold /* to delete */
+}
