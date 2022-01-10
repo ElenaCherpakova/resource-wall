@@ -20,48 +20,45 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"/>
 
+    <!-- External JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- App JS -->
+    <script type="text/javascript" src="/scripts/client_user_resources.js"></script>
+
      <!-- CSS stylesheet links  -->
     <link rel="stylesheet" href="/styles/style.css" type="text/css"/>
     <link rel="stylesheet" href="/styles/index.css" type="text/css"/>
     <link rel="stylesheet" href="/styles/user_resources.css" type="text/css"/>
 
-    </head>
+  </head>
   <body>
     <%- include('partials/header') %>
+
     <section id="greeting">
       <h2 class="main-title"> <b>Hey Alex... </b></h2>
     </section>
+
     <section id="main-content-resources">
-    <section id="vertical-list-options">
-      <ul class="list-group">
-        <li class="list-group-item">
-          <a href="#created-resources">My resources</a>
-        </li>
-        <li class="list-group-item">
-          <a href="#liked-resources">Liked resources</a>
-        </li>
-      </ul>
-    </section>
-    <section id="user-resources">
+
+      <section id="vertical-list-options">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <a href="#created-resources">My resources</a>
+          </li>
+          <li class="list-group-item">
+            <a href="#liked-resources">Liked resources</a>
+          </li>
+        </ul>
+      </section>
+
+
+      <section id="user-resources">
+
       <section id="created-resources">
-      <h2 class="main-title"> Your resources </h2>
-      <div class="card-deck">
-        <div class="card" style="width: 18rem;">
-          <img class="card-img-top resource-img img-fluid" src="img/city.png" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title text-center">Resource Title</h5>
-            <div>
-              <p class="card-text">DESCRIPTION: This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><b>Link:</b> User's link to resource </p>
-              <p class="card-text tag"><b>Tags:</b> User's tags to resource </p>
-          </div>
-          </div>
-          <div class="card-footer">
-            <i class="far fa-heart"></i>
-            <i class="far fa-comment-dots"></i>
-            <i class="far fa-star"> 4/5</i>
-          </div>
-        </div>
+
+        <h2 class="main-title"> Your resources </h2>
+
         <div class="card-deck">
           <div class="card" style="width: 18rem;">
             <img class="card-img-top resource-img img-fluid" src="img/city.png" alt="Card image cap">
@@ -71,7 +68,7 @@
                 <p class="card-text">DESCRIPTION: This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <p class="card-text"><b>Link:</b> User's link to resource </p>
                 <p class="card-text tag"><b>Tags:</b> User's tags to resource </p>
-            </div>
+              </div>
             </div>
             <div class="card-footer">
               <i class="far fa-heart"></i>
@@ -80,55 +77,55 @@
             </div>
           </div>
         </div>
+
       </section>
-        <section id="loadMore">
-        <div class="loadMore-btn">
-          <button type="button" class="btn btn-light">Load more ...</button>
-      </section>
-      <section id="liked-resources">
-      <h2 class="main-title"> Liked resources </h2>
-      <div class="card-deck">
-        <div class="card" style="width: 18rem;">
-          <img class="card-img-top resource-img img-fluid" src="img/city.png" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title text-center">Resource Title</h5>
-            <div>
-              <p class="card-text">DESCRIPTION: This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><b>Link:</b> User's link to resource </p>
-              <p class="card-text tag"><b>Tags:</b> User's tags to resource </p>
-          </div>
-          </div>
-          <div class="card-footer">
-            <i class="far fa-heart"></i>
-            <i class="far fa-comment-dots"></i>
-            <i class="far fa-star"> 4/5</i>
-          </div>
-        </div>
-        <div class="card-deck">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top resource-img img-fluid" src="img/city.png" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title text-center">Resource Title</h5>
-              <div>
-                <p class="card-text">DESCRIPTION: This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><b>Link:</b> User's link to resource </p>
-                <p class="card-text tag"><b>Tags:</b> User's tags to resource </p>
-            </div>
-            </div>
-            <div class="card-footer">
-              <i class="far fa-heart"></i>
-              <i class="far fa-comment-dots"></i>
-              <i class="far fa-star"> 4/5</i>
-            </div>
-          </div>
-      </section>
+
       <section id="loadMore">
         <div class="loadMore-btn">
           <button type="button" class="btn btn-light">Load more ...</button>
         </div>
       </section>
+
+      <section id="liked-resources">
+
+        <h2 class="main-title"> Liked resources </h2>
+
+        <div class="card-deck">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top resource-img img-fluid" src="img/city.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title text-center">Resource Title</h5>
+              <div>
+                <p class="card-text">DESCRIPTION: This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><b>Link:</b> User's link to resource </p>
+                <p class="card-text tag"><b>Tags:</b> User's tags to resource </p>
+              </div>
+            </div>
+            <div class="card-footer">
+              <i class="far fa-heart"></i>
+              <i class="far fa-comment-dots"></i>
+              <i class="far fa-star"> 4/5</i>
+            </div>
+          </div>
+        </div>
+
       </section>
+
+      <section id="loadMore">
+        <div class="loadMore-btn">
+          <button type="button" class="btn btn-light">Load more ...</button>
+        </div>
+      </section>
+
+
+
     </section>
-    </section>
+
+  </section>
+
     <%- include('partials/footer') %>
+     <!-- External JS -->
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
