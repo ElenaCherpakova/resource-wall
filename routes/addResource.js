@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 
+
 module.exports = (db) => {
   router.post("/create", (req, res) => {
     const resource = {
@@ -10,12 +11,13 @@ module.exports = (db) => {
       url: req.body.url,
       imageURL: req.body.imageURL,
       category: req.body.category
+
     }
     const promises = [];
     const promiseOne = db.query(
       `INSERT INTO resources(title, description, image, url, user_id)
          VALUES ($1, $2, $3, $4, $5) RETURNING *`,
-      [resource.title, resource.description, resource.imageURL, resource.url, 1] /*user_id is hard coded*/
+      [resource.title, resource.description, resource.imageURL, resource.url, req.session.user_id]
     );
 
     const promiseTwo = db.query(
