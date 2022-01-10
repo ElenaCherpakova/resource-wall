@@ -26,8 +26,8 @@ module.exports = (db) => {
     login(email, password).then((user) => {
       if (!user) {
         res.redirect("/login");
-        console.log(user.data[0]);
       } else {
+        req.session["user_id"] = user.id;
         res.redirect("/");
       }
     });

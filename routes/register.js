@@ -24,7 +24,7 @@ module.exports = (db) => {
       return db
         .query(
           `INSERT INTO users (first_name,last_name,username,email,password)
-   VALUES ($1, $2, $3, $4, $5) RETURNING id,first_name,last_name,username,email;`,
+   VALUES ($1, $2, $3, $4, $5) RETURNING *;`,
           [
             user["first_name"],
             user["last_name"],
@@ -33,7 +33,10 @@ module.exports = (db) => {
             user["password"],
           ]
         )
-        .then((result) => console.log(result.rows[0]))
+        .then((result) => {
+          console.log("result is ", result.rows[0]);
+          return result.rows[0];
+        })
         .catch((err) => {
           console.log(err.message);
         });
@@ -43,7 +46,6 @@ module.exports = (db) => {
     console.log(req.body);
     getUserWithEmail(user.email)
       .then((result) => {
-        console.log(" result 1 is :", result);
         if (result) {
           console.log("user already in system");
           return result;
@@ -52,12 +54,17 @@ module.exports = (db) => {
         }
       })
       .then((result) => {
-        console.log("result is: ", result);
         if (result) {
           console.log("user already in system");
           res.redirect("/login");
         } else {
-          addUser(user).then(() => res.redirect("/"));
+          addUser(user).then((user) => {
+            if (user) {
+              console.log("user is :", user);
+              req.session["user_id"] = user.id;
+            }
+            res.redirect("/");
+          });
         }
       });
     /*  if (getUserWithEmail(user.email) || getUserWithUsername(user.username)) {
