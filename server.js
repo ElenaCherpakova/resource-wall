@@ -36,14 +36,15 @@ app.use(express.static("public"));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
+const loginRoutes = require("./routes/login");
 const registerRoutes = require("./routes/register");
-const userResourcesRoutes = require("./routes/user_resources");
 const widgetsRoutes = require("./routes/widgets");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
-app.use("/api/register", registerRoutes(db));
+app.use("/", registerRoutes(db));
+app.use("/", loginRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
@@ -53,45 +54,6 @@ app.use("/api/widgets", widgetsRoutes(db));
 
 app.get("/", (req, res) => {
   res.render("index");
-});
-
-app.get("/login", (req, res) => {
-  res.render("login");
-});
-
-const getUserWithEmail = function (email) {
-  return db
-    .query("SELECT * FROM users WHERE email = $1", [email])
-    .then((result) => result.rows[0])
-    .catch((err) => {
-      console.log(err.message);
-    });
-};
-
-const login = function (email, password) {
-  return getUserWithEmail(email).then((user) => {
-    if (password === user.password) {
-      return user;
-    }
-    return null;
-  });
-};
-
-app.post("/login", (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
-  login(email, password).then((user) => {
-    if (!user) {
-      res.redirect("/login");
-      console.log(user.data[0]);
-    } else {
-      res.redirect("/");
-    }
-  });
-});
-
-app.get("/register", (req, res) => {
-  res.render("register");
 });
 
 app.get("/user/:id", (req, res) => {
