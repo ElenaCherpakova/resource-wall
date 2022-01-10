@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 8080;
 const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
+const cookieSession = require("cookie-session");
 const morgan = require("morgan");
 
 // PG database client/connection setup
@@ -30,7 +31,12 @@ app.use(
     isSass: false, // false => scss, true => sass
   })
 );
-
+app.use(
+  cookieSession({
+    name: "SESH",
+    keys: ["key1,", "key2"],
+  })
+);
 app.use(express.static("public"));
 
 // Separated Routes for each Resource
@@ -55,6 +61,7 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
+  console.log("User Id Is : ", req.session["user_id"]);
   res.render("index");
 });
 
@@ -62,7 +69,10 @@ app.get("/user/:id", (req, res) => {
   res.render("user_resources");
 });
 
-
+app.get("/logout", (req, res) => {
+  req.session = null;
+  res.redirect("/");
+});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
