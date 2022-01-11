@@ -31,14 +31,18 @@ body {
   font-weight: bold;
 }
 
+.profile-form {
+  border-radius:20px;
+}
+
 .btn:hover {
   background-color: white;
   border: 1px solid;
   color: black;
 }
 
-/*
-ul li a {
-  font-size:18px;
-  color:white;
-} */
+.back:hover {
+  color: #682773;
+  cursor: pointer
+}
+
