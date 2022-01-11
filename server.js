@@ -67,7 +67,34 @@ app.use("/", profileRoutes(db));
 
 app.get("/", (req, res) => {
   console.log("User Id Is : ", req.session["user_id"]);
-  res.render("index");
+  //res.render("index");
+  //added code
+
+  db.query(`SELECT resources.*, categories.name AS category_type
+    FROM ((resources
+    INNER JOIN categories_resources ON resources.id = resource_id)
+    INNER JOIN categories ON categories.id = category_id)
+    ORDER BY created_at DESC
+    LIMIT 4;`)
+      .then((data) => {
+      //  const getTag = await db.query(
+      //   `SELECT categories.name as name FROM categories
+      //   JOIN categories_resources ON categories.id = category_id
+      //   JOIN resources ON resources.id = resource_id
+      //   WHERE resources.id = $1`, [data.rows[0].id] //resource_id is hard coded!
+      //   )
+        const resources = data.rows
+        //const tag = getTag.rows[0].name
+        const templateVars = {resources}
+        console.log("this is templateVars",templateVars);
+        //console.log("getTag info --->", getTag.rows[0].name)
+       res.render("index", templateVars)
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
 });
 
 app.get("/user/:id", (req, res) => {

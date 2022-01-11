@@ -19,8 +19,10 @@
       rel="stylesheet"
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"/>
- <!-- CSS stylesheet links  -->
-       <!-- CSS stylesheet links  -->
+
+      <!-- External JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <!-- CSS stylesheet links  -->
     <link rel="stylesheet" href="/styles/style.css" type="text/css"/>
     <link rel="stylesheet" href="/styles/index.css" type="text/css"/>
@@ -29,15 +31,17 @@
     <%- include('partials/header') %>
     <section id="resources">
       <h2 class="main-title"> Latest Resources </h2>
+
+      <% for (let resource in resources) { %>
       <div class="card-deck">
         <div class="card" style="width: 18rem;">
-          <img class="card-img-top resource-img img-fluid" src="img/city.png" alt="Card image cap">
+          <img class="card-img-top resource-img img-fluid" src="<%= resources[resource].image %>" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title text-center">Resource Title</h5>
+            <h5 class="card-title text-center"><%= resources[resource].title%></h5>
             <div>
-              <p class="card-text">DESCRIPTION: This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><b>Link:</b> User's link to resource </p>
-              <p class="card-text tag"><b>Tags:</b> User's tags to resource </p>
+              <p class="card-text"><%= resources[resource].description %></p>
+              <p class="card-text"><b>Link: </b><%= resources[resource].url %></p>
+              <p class="card-text tag"><b>Tags:</b> <%= resources[resource].category_type %> </p>
           </div>
           </div>
           <div class="card-footer">
@@ -46,62 +50,15 @@
             <i class="far fa-star"> 4/5</i>
           </div>
         </div>
-        <div class="card-deck">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top resource-img img-fluid" src="img/man-walking-dog.png" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title text-center">Resource Title</h5>
-              <div>
-                <p class="card-text">DESCRIPTION: This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><b>Link:</b> User's link to resource </p>
-                <p class="card-text tag"><b>Tags:</b> User's tags to resource </p>
-            </div>
-            </div>
-            <div class="card-footer">
-              <i class="far fa-heart"></i>
-              <i class="far fa-comment-dots"></i>
-              <i class="far fa-star"> 4/5</i>
-            </div>
-        </div>
-          <div class="card-deck">
-            <div class="card" style="width: 18rem;">
-              <img class="card-img-top resource-img img-fluid" src="img/man-walking-dog.png" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title text-center">Resource Title</h5>
-                <div>
-                  <p class="card-text">DESCRIPTION: This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text"><b>Link:</b> User's link to resource </p>
-                  <p class="card-text tag"><b>Tags:</b> User's tags to resource </p>
-              </div>
-              </div>
-              <div class="card-footer">
-                <i class="far fa-heart"></i>
-                <i class="far fa-comment-dots"></i>
-                <i class="far fa-star"> 4/5</i>
-              </div>
-            </div>
-            <div class="card-deck">
-              <div class="card" style="width: 18rem;">
-                <img class="card-img-top resource-img img-fluid" src="img/nature.png" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title text-center">Resource Title</h5>
-                  <div>
-                    <p class="card-text">DESCRIPTION: This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><b>Link:</b> User's link to resource </p>
-                    <p class="card-text tag"><b>Tags:</b> User's tags to resource </p>
-                </div>
-                </div>
-                <div class="card-footer">
-                  <i class="far fa-heart"></i>
-                  <i class="far fa-comment-dots"></i>
-                  <i class="far fa-star"> 4/5</i>
-                </div>
-        </div>
-    </section>
-    <section id="loadMore">
+
+        <% } %>
+
+
+      <section id="loadMore">
       <div class="loadMore-btn">
         <button type="button" class="btn btn-light">Load more ...</button>
       </div>
+    </section>
     </section>
     <%- include('partials/footer') %>
   <!-- External JS -->
