@@ -67,7 +67,20 @@ app.use("/", profileRoutes(db));
 
 app.get("/", (req, res) => {
   console.log("User Id Is : ", req.session["user_id"]);
-  res.render("index");
+  //res.render("index");
+  //added code
+  db.query(`SELECT * FROM resources ORDER BY created_at DESC LIMIT 4;`)
+      .then(data => {
+       const resources = data.rows
+       const templateVars = {resources}
+       console.log("this is templateVars",templateVars);
+       res.render("index", templateVars)
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
 });
 
 app.get("/user/:id", (req, res) => {
