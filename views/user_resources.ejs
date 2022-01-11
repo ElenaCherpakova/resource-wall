@@ -35,8 +35,13 @@
   <body>
     <%- include('partials/header') %>
 
+    <% if(Object.keys(userResources).length === 0) { %>
+      <h2> You have not created or liked resources yet ;) </h2>
+
+     <%  } else { %>
+
     <section id="greeting">
-      <h2 class="main-title"> <b>Hey Alex... </b></h2>
+      <h2 class="main-title"> <b>Hey  <%= userResources[0].user_name %> </b></h2>
     </section>
 
     <section id="main-content-resources">
@@ -52,31 +57,32 @@
         </ul>
       </section>
 
-
       <section id="user-resources">
 
       <section id="created-resources">
 
         <h2 class="main-title"> Your resources </h2>
 
-        <div class="card-deck">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top resource-img img-fluid" src="img/city.png" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title text-center">Resource Title</h5>
-              <div>
-                <p class="card-text">DESCRIPTION: This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><b>Link:</b> User's link to resource </p>
-                <p class="card-text tag"><b>Tags:</b> User's tags to resource </p>
+        <% for (let resource in userResources) { %>
+          <div class="card-deck">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top resource-img img-fluid" src="<%= userResources[resource].image %>" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title text-center"><%= userResources[resource].title%></h5>
+                <div>
+                  <p class="card-text"><%= userResources[resource].description %></p>
+                  <p class="card-text"><b>Link: </b><%= userResources[resource].url %></p>
+                  <p class="card-text tag"><b>Tags:</b> <%= userResources[resource].category_type %> </p>
+              </div>
+              </div>
+              <div class="card-footer">
+                <i class="far fa-heart"></i>
+                <i class="far fa-comment-dots"></i>
+                <i class="far fa-star"> 4/5</i>
               </div>
             </div>
-            <div class="card-footer">
-              <i class="far fa-heart"></i>
-              <i class="far fa-comment-dots"></i>
-              <i class="far fa-star"> 4/5</i>
-            </div>
-          </div>
-        </div>
+
+            <% } %>
 
       </section>
 
@@ -90,24 +96,26 @@
 
         <h2 class="main-title"> Liked resources </h2>
 
-        <div class="card-deck">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top resource-img img-fluid" src="img/city.png" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title text-center">Resource Title</h5>
-              <div>
-                <p class="card-text">DESCRIPTION: This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><b>Link:</b> User's link to resource </p>
-                <p class="card-text tag"><b>Tags:</b> User's tags to resource </p>
+        <% for (let resource in likedResources) { %>
+          <div class="card-deck">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top resource-img img-fluid" src="<%= likedResources[resource].image %>" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title text-center"><%= likedResources[resource].title%></h5>
+                <div>
+                  <p class="card-text"><%= likedResources[resource].description %></p>
+                  <p class="card-text"><b>Link: </b><%= likedResources[resource].url %></p>
+                  <p class="card-text tag"><b>Tags:</b> <%= likedResources[resource].category_type %> </p>
+              </div>
+              </div>
+              <div class="card-footer">
+                <i class="far fa-heart"></i>
+                <i class="far fa-comment-dots"></i>
+                <i class="far fa-star"> 4/5</i>
               </div>
             </div>
-            <div class="card-footer">
-              <i class="far fa-heart"></i>
-              <i class="far fa-comment-dots"></i>
-              <i class="far fa-star"> 4/5</i>
-            </div>
-          </div>
-        </div>
+
+            <% } %>
 
       </section>
 
@@ -121,6 +129,7 @@
 
     </section>
 
+      <% } %>
   </section>
 
     <%- include('partials/footer') %>

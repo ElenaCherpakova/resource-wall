@@ -76,7 +76,7 @@ app.get("/", (req, res) => {
     INNER JOIN categories ON categories.id = category_id)
     ORDER BY created_at DESC
     LIMIT 4;`)
-      .then(async (data) => {
+      .then((data) => {
       //  const getTag = await db.query(
       //   `SELECT categories.name as name FROM categories
       //   JOIN categories_resources ON categories.id = category_id
