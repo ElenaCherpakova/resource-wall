@@ -69,11 +69,20 @@ app.get("/", (req, res) => {
   console.log("User Id Is : ", req.session["user_id"]);
   //res.render("index");
   //added code
+
   db.query(`SELECT * FROM resources ORDER BY created_at DESC LIMIT 4;`)
-      .then(data => {
-       const resources = data.rows
-       const templateVars = {resources}
-       console.log("this is templateVars",templateVars);
+      .then(async (data) => {
+       const getTag = await db.query(
+        `SELECT categories.name as name FROM categories
+        JOIN categories_resources ON categories.id = category_id
+        JOIN resources ON resources.id = resource_id
+        WHERE resources.id = $1`, [data.rows[0].id] //resource_id is hard coded!
+        )
+        const resources = data.rows
+        const tag = getTag.rows[0].name
+        const templateVars = {resources, tag}
+        console.log("this is templateVars",templateVars);
+        console.log("getTag info --->", getTag.rows[0].name)
        res.render("index", templateVars)
       })
       .catch(err => {
