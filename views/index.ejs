@@ -34,7 +34,7 @@
       <h2 class="main-title"> Latest Resources </h2>
 
       <% for (let resource in resources) { %>
-      <div class="card-deck">
+      <div class="card-deck" data-id="<&= resources[resource].id %>">
         <div class="card" style="width: 18rem;">
           <img class="card-img-top resource-img img-fluid" src="<%= resources[resource].image %>" alt="Card image cap">
           <div class="card-body">
@@ -48,7 +48,12 @@
           <div class="card-footer">
             <i class="far fa-heart" resource_id = "<%=resources[resource].id %>"></i>
             <i class="far fa-comment-dots"></i>
-            <i class="far fa-star"> 4/5</i>
+            <i class="far fa-star star" id="<%= resources[resource].title %>-1" title="<%= resources[resource].title %>" resource_id="<%=resources[resource].id %>" data-star="<%= resources[resource].title %>-1"></i>
+            <i class="far fa-star star" id="<%= resources[resource].title %>-2" title="<%= resources[resource].title %>" resource_id="<%=resources[resource].id %>" data-star="<%= resources[resource].title %>-2"></i>
+            <i class="far fa-star star" id="<%= resources[resource].title %>-3" title="<%= resources[resource].title %>" resource_id="<%=resources[resource].id %>" data-star="<%= resources[resource].title %>-3"></i>
+            <i class="far fa-star star" id="<%= resources[resource].title %>-4" title="<%= resources[resource].title %>" resource_id="<%=resources[resource].id %>" data-star="<%= resources[resource].title %>-4"></i>
+            <i class="far fa-star star" id="<%= resources[resource].title %>-5" title="<%= resources[resource].title %>"  resource_id="<%=resources[resource].id %>" data-star="<%= resources[resource].title %>-5"></i>
+            
           </div>
         </div>
 
@@ -67,5 +72,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="scripts/reactions_resources.js"></script>
+    <script type="text/javascript" src="scripts/rate.js"></script>
   </body>
 </html>

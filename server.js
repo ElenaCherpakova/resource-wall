@@ -47,6 +47,7 @@ const addResource = require("./routes/addResource");
 const registerRoutes = require("./routes/register");
 const searchRoutes = require("./routes/search");
 const resourcesRoutes = require("./routes/resources");
+const rateRoutes = require("./routes/rate");
 const profileRoutes = require("./routes/profile");
 const { query } = require("express");
 
@@ -57,6 +58,7 @@ app.use("/", registerRoutes(db));
 app.use("/", addResource(db));
 app.use("/", loginRoutes(db));
 app.use("/", searchRoutes(db));
+app.use("/", rateRoutes(db));
 app.use("/", resourcesRoutes(db));
 app.use("/", profileRoutes(db));
 
@@ -111,16 +113,17 @@ app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
 
-app.post("/likes", (req,res)=>{
-  const resourceID = req.body['resource_id '] //dont delete the space
-db.query(`INSERT INTO likes (user_id, resource_id)
-  VALUES ($1, $2)`, [req.session.user_id, resourceID])
-  .then ((result) => {
-    res.send("Success")
-  })
-  .catch((err) => {
-    res.send("Error: " + err.message)
-  });
-
+app.post("/likes", (req, res) => {
+  const resourceID = req.body["resource_id "]; //dont delete the space
+  db.query(
+    `INSERT INTO likes (user_id, resource_id)
+  VALUES ($1, $2)`,
+    [req.session.user_id, resourceID]
+  )
+    .then((result) => {
+      res.send("Success");
+    })
+    .catch((err) => {
+      res.send("Error: " + err.message);
+    });
 });
-

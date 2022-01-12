@@ -42,7 +42,7 @@
   color: #d9d4d1;
 }
 
-.far{
+.far {
   width: 100%;
 }
 
@@ -84,4 +84,8 @@
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
+}
+
+.active-star {
+  color: gold;
 }
