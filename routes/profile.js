@@ -59,13 +59,17 @@ module.exports = (db) => {
       WHERE id = $5
       RETURNING *;`, [user.firstName, user.lastName, user.email, user.password, req.session.user_id])
 
-      .then((result) => result.rows[0])
+      .then((result) => {
+        console.log("I GOT HERE")
+        res.redirect("/profile")
+      })
+
       .catch((err) => {
         res
           .status(500)
           .json({ error: err.message });
-        });
-    });
+      });
+  });
   return router;
 }
 

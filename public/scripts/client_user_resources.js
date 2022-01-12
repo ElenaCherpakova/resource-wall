@@ -1,5 +1,5 @@
 // Client facing scripts here
-//IIFE
+// IIFE
 
 
 $(document).ready(function () {
