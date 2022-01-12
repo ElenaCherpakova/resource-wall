@@ -1,7 +1,7 @@
 $(document).ready(function () {
   $('.fa-comment-dots').on('click', function () {
     console.log($(this))
-    $("#commentSection").toggle();
+    $(".commentSection").toggle();
     console.log($(this))
   });
 
