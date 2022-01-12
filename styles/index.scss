@@ -6,7 +6,7 @@
 
 .card-deck {
   display: flex;
-  flex-direction: row;
+  // flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -27,7 +27,7 @@
 
 .card-footer {
   display: flex;
-  flex-direction: row;
+  // flex-direction: row;
   justify-content: space-between;
   align-items: center;
   color: white;
@@ -42,9 +42,9 @@
   color: #d9d4d1;
 }
 
-.far{
-  width: 100%;
-}
+// .far{
+//   width: 100%;
+// }
 
 .tag {
   color: gray;
@@ -73,7 +73,7 @@
 }
 
 .loadMore-btn {
-  width: 30%;
+  width: 100%;
   font-family: Titillium Web;
   font-weight: bold;
   font-size: 200%;
@@ -86,6 +86,10 @@
   align-items: center;
 }
 
-.heartChange {
-  color:red;
+#commentSection {
+  display:none;
 }
+
+// .dropdown-comments{
+//   display:block;
+// }

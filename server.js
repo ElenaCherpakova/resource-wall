@@ -111,16 +111,32 @@ app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
 
-app.post("/likes", (req,res)=>{
+app.post("/likes", (req, res) => {
   const resourceID = req.body['resource_id '] //dont delete the space
-db.query(`INSERT INTO likes (user_id, resource_id)
+  db.query(`INSERT INTO likes (user_id, resource_id)
   VALUES ($1, $2)`, [req.session.user_id, resourceID])
-  .then ((result) => {
-    res.send("Success")
-  })
-  .catch((err) => {
-    res.send("Error: " + err.message)
-  });
+    .then((result) => {
+      res.send("Success")
+    })
+    .catch((err) => {
+      res.send("Error: " + err.message)
+    });
 
 });
 
+app.post("/comments", (req, res) => {
+
+  const resourceID = req.body['resource_id']
+  console.log(resourceID)
+  const commentText = req.body['comment']
+  console.log(commentText)
+
+  db.query(`INSERT INTO comments (comment, user_id, resource_id)
+  VALUES ($1, $2, $3)`, [commentText, req.session.user_id, resourceID])
+    .then((result) => {
+      res.send("Success")
+    })
+    .catch((err) => {
+      res.send("Error: " + err.message)
+    });
+});
