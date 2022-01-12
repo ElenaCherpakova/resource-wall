@@ -45,7 +45,7 @@ const usersRoutes = require("./routes/users");
 const loginRoutes = require("./routes/login");
 const addResource = require("./routes/addResource");
 const registerRoutes = require("./routes/register");
-const widgetsRoutes = require("./routes/widgets");
+const searchRoutes = require("./routes/search");
 const resourcesRoutes = require("./routes/resources");
 const profileRoutes = require("./routes/profile");
 const { query } = require("express");
@@ -56,8 +56,8 @@ app.use("/api/users", usersRoutes(db));
 app.use("/", registerRoutes(db));
 app.use("/", addResource(db));
 app.use("/", loginRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
-app.use("/", resourcesRoutes (db));
+app.use("/", searchRoutes(db));
+app.use("/", resourcesRoutes(db));
 app.use("/", profileRoutes(db));
 
 // Note: mount other resources here, using the same pattern above
@@ -71,31 +71,31 @@ app.get("/", (req, res) => {
   //res.render("index");
   //added code
 
-  db.query(`SELECT resources.*, categories.name AS category_type
+  db.query(
+    `SELECT resources.*, categories.name AS category_type
     FROM ((resources
     INNER JOIN categories_resources ON resources.id = resource_id)
     INNER JOIN categories ON categories.id = category_id)
     ORDER BY created_at DESC
-    LIMIT 4;`)
-      .then((data) => {
+    LIMIT 4;`
+  )
+    .then((data) => {
       //  const getTag = await db.query(
       //   `SELECT categories.name as name FROM categories
       //   JOIN categories_resources ON categories.id = category_id
       //   JOIN resources ON resources.id = resource_id
       //   WHERE resources.id = $1`, [data.rows[0].id] //resource_id is hard coded!
       //   )
-        const resources = data.rows
-        //const tag = getTag.rows[0].name
-        const templateVars = {resources}
-        console.log("this is templateVars",templateVars);
-        //console.log("getTag info --->", getTag.rows[0].name)
-       res.render("index", templateVars)
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
+      const resources = data.rows;
+      //const tag = getTag.rows[0].name
+      const templateVars = { resources };
+      console.log("this is templateVars", templateVars);
+      //console.log("getTag info --->", getTag.rows[0].name)
+      res.render("index", templateVars);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
 });
 
 app.get("/user/:id", (req, res) => {
