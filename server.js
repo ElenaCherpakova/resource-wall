@@ -48,6 +48,7 @@ const registerRoutes = require("./routes/register");
 const widgetsRoutes = require("./routes/widgets");
 const resourcesRoutes = require("./routes/resources");
 const profileRoutes = require("./routes/profile");
+const { query } = require("express");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -109,3 +110,17 @@ app.get("/logout", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+
+app.post("/likes", (req,res)=>{
+  const resourceID = req.body['resource_id '] //dont delete the space
+db.query(`INSERT INTO likes (user_id, resource_id)
+  VALUES ($1, $2)`, [req.session.user_id, resourceID])
+  .then ((result) => {
+    res.send("Success")
+  })
+  .catch((err) => {
+    res.send("Error: " + err.message)
+  });
+
+});
+
