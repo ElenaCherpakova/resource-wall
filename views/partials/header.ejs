@@ -16,8 +16,9 @@
         <li class="nav-item"><a href="/profile" class="active nav-link">Profile</a></li>
 
     </ul>
-    <form lass="d-flex d-lg-block main-menu" action="">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <form class="d-flex d-lg-block main-menu" action="/search" method="POST">
+      <input class="form-control mr-sm-2" type="search" id= "searchTag" placeholder="Search" aria-label="Search" name="search">
+      <button class="btn btn-primary" id="search" type="submit">search</button>
     </form>
     <div class="d-flex">
       <a type="button" href="/login" class="btn btn-outline-light">
