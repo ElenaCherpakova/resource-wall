@@ -6,15 +6,15 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
     db.query(`SELECT * FROM resources ORDER BY created_at DESC LIMIT 1;`)
       .then(data => {
         //const users = data.rows;
-       // res.json({ users });
-       console.log(data.rows[0])
+        // res.json({ users });
+        console.log(data.rows[0])
       })
       .catch(err => {
         res

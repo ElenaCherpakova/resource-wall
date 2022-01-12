@@ -2,19 +2,6 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = (db) => {
-
-  // const selectExistedUser = db.query(
-  //   `SELECT * FROM users
-  //   WHERE users.id = $1;`,
-  //   [req.session.user_id])
-
-
-
-
-
-
-
-
   router.get("/profile", (req, res) => {
     if (!req.session.user_id) {
       res.redirect("/login");
@@ -23,10 +10,8 @@ module.exports = (db) => {
         `SELECT * FROM users
         WHERE users.id = $1;`,
         [req.session.user_id])
-
         .then((result) => {
           console.log("this IS RESULT", result.rows)
-          // const userResources = result[0].rows;
           const selectedUser = result.rows[0]
           console.log("this user=>", selectedUser)
           const templateVars = { selectedUser };
