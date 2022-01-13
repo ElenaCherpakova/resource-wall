@@ -10,11 +10,16 @@
   order: 0;
   flex-grow: 1;
   align-self: flex-start;
+  position:fixed;
+  width:20%;
 }
 
 #user-resources {
   margin-top: 2rem;
   flex-grow: 3;
+  position:absolute;
+  width:70%;
+  left:30%;
 }
 
 .list-group-item {
@@ -35,4 +40,10 @@ a:link {
 a:visited {
   color: grey;
   font-weight: bold /* to delete */
+}
+
+.resource-footer {
+  position:absolute;
+  width:100%;
+  bottom:0;
 }

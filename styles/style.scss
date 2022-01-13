@@ -23,13 +23,15 @@ body {
 .btn {
   border: none;
   outline: none;
-  height: 50px;
+  height: 40px;
   width: 100%;
   background-color: black;
   color: white;
   border-radius: 4px;
   font-weight: bold;
+  margin:0.1em;
 }
+
 
 .profile-form {
   border-radius:20px;
@@ -43,6 +45,13 @@ body {
 
 .back:hover {
   color: #682773;
-  cursor: pointer
+  cursor: pointer;
 }
 
+
+#search {
+  width:20%;
+  padding:5px;
+}
+
+.vertical

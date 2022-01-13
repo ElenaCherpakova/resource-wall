@@ -82,8 +82,7 @@ app.get("/", (req, res) => {
     LEFT JOIN likes ON likes.resource_id = resources.id
     LEFT JOIN ratings ON ratings.resource_id = resources.id
     GROUP BY resources.id, categories.name
-    ORDER BY resources.created_at DESC
-    LIMIT 4`
+    ORDER BY resources.created_at DESC`
 
     // LEFT JOIN comments ON comments.resource_id = resources.id
 

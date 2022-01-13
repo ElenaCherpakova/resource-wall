@@ -6,7 +6,7 @@
 
 .card-deck {
   display: flex;
-  // flex-direction: row;
+  flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -27,7 +27,7 @@
 
 .card-footer {
   display: flex;
-  // flex-direction: row;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   color: white;
@@ -70,6 +70,7 @@
 
 .card-text {
   font-family: Titillium Web;
+  text-align: center;
 }
 
 .loadMore-btn {
@@ -79,13 +80,21 @@
   font-size: 200%;
 }
 
-#loadMore {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: center;
-}
+// #loadMore {
+//   display: flex;
+//   flex-direction: column;
+//   flex-wrap: nowrap;
+//   align-items: center;
+// }
 
 .active-star {
   color: gold;
+}
+
+
+
+.container{
+  display:flex;
+  justify-content:space-evenly;
+  flex-wrap: wrap;
 }
