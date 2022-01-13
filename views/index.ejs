@@ -44,13 +44,9 @@
       <h2 class="main-title">Latest Resources</h2>
 
       <% for (let resource in resources) { %>
-      <div class="card-deck">
-        <div class="card" style="width: 18rem">
-          <img
-            class="card-img-top resource-img img-fluid"
-            src="<%= resources[resource].image %>"
-            alt="Card image cap"
-          />
+      <div class="card-deck" data-id="<&= resources[resource].id %>">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top resource-img img-fluid" src="<%= resources[resource].image %>" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title text-center">
               <%= resources[resource].title%>
@@ -66,12 +62,17 @@
             </div>
           </div>
           <div class="card-footer">
-             <div>
-               <span class="likes_id"> <%=resources[resource].like %> </span>
-              <i class="far fa-heart" resource_id="<%=resources[resource].id %>"></i>
-           </div>
-            <span><a href="/comments/<%=resources[resource].id %>"><i class="far fa-comment-dots"></i></a></span>
-            <i class="far fa-star"> 4/5</i>
+            <i
+              class="far fa-heart"
+              resource_id="<%=resources[resource].id %>"
+            ></i>
+            <i class="far fa-comment-dots"></i>
+            <i class="far fa-star star" id="<%= resources[resource].title %>-1" title="<%= resources[resource].title %>" resource_id="<%=resources[resource].id %>" data-star="<%= resources[resource].title %>-1"></i>
+            <i class="far fa-star star" id="<%= resources[resource].title %>-2" title="<%= resources[resource].title %>" resource_id="<%=resources[resource].id %>" data-star="<%= resources[resource].title %>-2"></i>
+            <i class="far fa-star star" id="<%= resources[resource].title %>-3" title="<%= resources[resource].title %>" resource_id="<%=resources[resource].id %>" data-star="<%= resources[resource].title %>-3"></i>
+            <i class="far fa-star star" id="<%= resources[resource].title %>-4" title="<%= resources[resource].title %>" resource_id="<%=resources[resource].id %>" data-star="<%= resources[resource].title %>-4"></i>
+            <i class="far fa-star star" id="<%= resources[resource].title %>-5" title="<%= resources[resource].title %>"  resource_id="<%=resources[resource].id %>" data-star="<%= resources[resource].title %>-5"></i>
+
           </div>
           <!--COMMENTS PART-->
         </div>
@@ -103,6 +104,8 @@
       crossorigin="anonymous"
     ></script>
     <script src="scripts/reactions_resources.js"></script>
+    <script type="text/javascript" src="scripts/rate.js"></script>
     <script src="scripts/comments-section.js"></script>
   </body>
 </html>
+

@@ -47,6 +47,7 @@ const addResource = require("./routes/addResource");
 const registerRoutes = require("./routes/register");
 const searchRoutes = require("./routes/search");
 const resourcesRoutes = require("./routes/resources");
+const rateRoutes = require("./routes/rate");
 const profileRoutes = require("./routes/profile");
 const commentsPage = require("./routes/commentsPage");
 const { query } = require("express");
@@ -58,6 +59,7 @@ app.use("/", registerRoutes(db));
 app.use("/", addResource(db));
 app.use("/", loginRoutes(db));
 app.use("/", searchRoutes(db));
+app.use("/", rateRoutes(db));
 app.use("/", resourcesRoutes(db));
 app.use("/", profileRoutes(db));
 app.use("/", commentsPage(db));
@@ -82,9 +84,20 @@ app.get("/", (req, res) => {
     GROUP BY resources.id, categories.name
     ORDER BY resources.created_at DESC
     LIMIT 4`
+
+    // LEFT JOIN comments ON comments.resource_id = resources.id
+
+    // `SELECT resources.*, categories.name AS category_type
+    // FROM ((resources
+    // INNER JOIN categories_resources ON resources.id = resource_id)
+    // INNER JOIN categories ON categories.id = category_id)
+    // ORDER BY created_at DESC
+    // LIMIT 4;`
   )
     .then((data) => {
       const resources = data.rows;
+      console.log(resources);
+      //const tag = getTag.rows[0].name
       const templateVars = { resources };
       console.log("this is templateVars", templateVars);
       res.render("index", templateVars);
@@ -119,8 +132,3 @@ app.post("/likes", (req, res) => {
     });
 
 });
-
-
-
-
-
