@@ -48,7 +48,7 @@
                 <input
                   type="text"
                   class="form-control profile-form"
-                  placeholder="<%=selectedUser.first_name %>" name="firstName"
+                  value="<%=selectedUser.first_name %>" name="firstName" required
                 />
               </div>
 
@@ -57,7 +57,7 @@
                 <input
                   type="text"
                   class="form-control profile-form"
-                  placeholder="<%=selectedUser.last_name %>" name="lastName"
+                  value="<%=selectedUser.last_name %>" name="lastName" required
                 />
               </div>
 
@@ -65,7 +65,7 @@
                 <input
                   type="password"
                   class="form-control profile-form"
-                  placeholder="<%=selectedUser.password %>" name="password"
+                  value="<%=selectedUser.password %>" name="password" required
                 />
               </div>
 
@@ -73,7 +73,7 @@
                 <input
                   type="email" name="email"
                   class="form-control profile-form"
-                  placeholder="<%=selectedUser.email %>"
+                  value="<%=selectedUser.email %>" required
                 />
             </div>
 
