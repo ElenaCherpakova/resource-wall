@@ -120,14 +120,30 @@ app.listen(PORT, () => {
 });
 
 app.post("/likes", (req, res) => {
-  const resourceID = req.body['resource_id '] //dont delete the space
-  db.query(`INSERT INTO likes (user_id, resource_id)
-  VALUES ($1, $2)`, [req.session.user_id, resourceID])
-    .then((result) => {
-      res.send("Success")
-    })
-    .catch((err) => {
-      res.send("Error: " + err.message)
+  const resourceID = req.body["resource_id "]; //dont delete the space
+  const user = req.session.user_id;
+  if (user) {
+    db.query(`SELECT * FROM likes WHERE user_id = $1 AND resource_id = $2;`, [
+      user,
+      resourceID,
+    ]).then((result) => {
+      if (result.rows.length < 1) {
+        return db
+          .query(`INSERT INTO likes (user_id , resource_id) VALUES ($1, $2);`, [
+            user,
+            resourceID,
+          ])
+          .then(() => {
+            return res.json({
+              status: 201,
+            });
+          });
+      } else {
+        return res.json({
+          "Error Message": "You have already liked this resource.",
+          status: 429,
+        });
+      }
     });
-
+  }
 });
