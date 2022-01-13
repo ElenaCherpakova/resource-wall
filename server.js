@@ -120,19 +120,6 @@ app.post("/likes", (req, res) => {
 
 });
 
-// app.post("/comments", (req, res) => {
-//   const resourceID = req.body['resource_id']
-//   const commentText = req.body['comment']
-//   db.query(`INSERT INTO comments (comment, user_id, resource_id)
-//   VALUES ($1, $2, $3)`, [commentText, req.session.user_id, resourceID])
-//     .then((result) => {
-//       res.send("Success")
-//     })
-//     .catch((err) => {
-//       res.send("Error: " + err.message)
-//     });
-// });
-
 
 
 
