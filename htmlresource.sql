@@ -1,26 +1,39 @@
-SELECT * FROM likes
-JOIN resources ON resources.id = resource_id
-WHERE likes.user_id = 1;
+ <div class="commentSection">
+            <textarea
+              class="form-control"
+              placeholder="Leave your comments"
+              id="commentsText"
+              rows="4"
+              style="background: #fff"
+            ></textarea>
+            <label class="form-label" for="commentsText"></label>
+            <div class="float p-2">
+              <button type="button" id="post-comment" class="btn btn-primary btn-sm" resource_id = "<%=resources[resource].id %>">
+                Post comment
+              </button>
+              <button type="button" class="btn btn-outline-primary btn-sm">
+                Cancel
+              </button>
+            </div>
+          </div>
 
 
 
+                <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+                  <div class="d-flex flex-start w-100">
 
-SELECT likes.*, categories.name AS category_type
-FROM (((likes INNER JOIN resources ON resources.id = likes.resource_id)
-INNER JOIN categories_resources ON resources.id = resource_id)
-INNER JOIN categories ON categories.id = category_id)
-WHERE likes.user_id= $1
-ORDER BY created_at DESC
-LIMIT 1;
-
-SELECT *
-FROM likes l
-INNER JOIN resources r ON l.resource_id = r.id
-INNER JOIN categories_resources cr ON cr.resource_id = r.id
-INNER JOIN categories c ON c.id = cr.id
-WHERE l.user_id = 1
-ORDER BY r.created_at DESC
-LIMIT 4;
-
-
-
+                    <div class="form-outline w-100">
+                      <textarea
+                        class="form-control"
+                        id="textAreaExample"
+                        rows="4"
+                        style="background: #fff;"
+                      ></textarea>
+                      <label class="form-label" for="textAreaExample">Message</label>
+                    </div>
+                  </div>
+                  <div class="float-end mt-2 pt-1">
+                    <button type="button" class="btn btn-primary btn-sm">Post comment</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm">Cancel</button>
+                  </div>
+                </div>

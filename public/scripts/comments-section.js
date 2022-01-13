@@ -1,21 +1,24 @@
 $(document).ready(function () {
+  console.log("Hello Word")
   $('.fa-comment-dots').on('click', function () {
-    console.log($(this))
+    console.log("$(this)")
     $(".commentSection").toggle();
     console.log($(this))
   });
 
   $("#post-comment").on("click", function (e) {
-    e.preventDefault()
     console.log($(this))
+    e.preventDefault()
     const comment = $("#commentsText").val().trim()
+    console.log("the resource id", $(this).attr("resource_id"))
     let data = {resource_id: `${$(this).attr("resource_id")}`, "comment" : comment}
+
     $.ajax({
       method: 'POST',
-      url: '/comments',
+      url: `/comments/${$(this).attr("resource_id")}`,
       data: data,
       success: (response) => {
-        console.log(response)
+        window.location.reload();
       },
       error: (err) => {
         console.log(err)

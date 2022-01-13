@@ -66,32 +66,14 @@
             </div>
           </div>
           <div class="card-footer">
-            <i
-              class="far fa-heart"
-              resource_id="<%=resources[resource].id %>"
-            ></i>
-            <i class="far fa-comment-dots"></i>
+             <div>
+               <span class="likes_id"> <%=resources[resource].like %> </span>
+              <i class="far fa-heart" resource_id="<%=resources[resource].id %>"></i>
+           </div>
+            <span><a href="/comments/<%=resources[resource].id %>"><i class="far fa-comment-dots"></i></a></span>
             <i class="far fa-star"> 4/5</i>
           </div>
           <!--COMMENTS PART-->
-          <div class="commentSection">
-            <textarea
-              class="form-control"
-              placeholder="Leave your comments"
-              id="commentsText"
-              rows="4"
-              style="background: #fff"
-            ></textarea>
-            <label class="form-label" for="commentsText"></label>
-            <div class="float p-2">
-              <button type="button" id="post-comment" class="btn btn-primary btn-sm" resource_id = "<%=resources[resource].id %>">
-                Post comment
-              </button>
-              <button type="button" class="btn btn-outline-primary btn-sm">
-                Cancel
-              </button>
-            </div>
-          </div>
         </div>
       </div>
 
