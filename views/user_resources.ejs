@@ -36,7 +36,7 @@
     <%- include('partials/header') %>
 
     <% if(Object.keys(userResources).length === 0) { %>
-      <h2> You have not created or liked resources yet ;) </h2>
+      <h2>You have not created or liked resources yet</h2>
 
      <%  } else { %>
 
@@ -68,6 +68,7 @@
 
 
         <% for (let resource in userResources) { %>
+
           <div class="card-deck" data-id="<&= resources[resource].id %>">
             <div class="card" style="width: 18rem;">
               <img class="card-img-top resource-img img-fluid" src="<%= userResources[resource].image %>" alt="Card image cap">
@@ -147,8 +148,9 @@
 
       <% } %>
   </section>
-
+<div class="resource-footer">
     <%- include('partials/footer') %>
+   </div>
      <!-- External JS -->
 
      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

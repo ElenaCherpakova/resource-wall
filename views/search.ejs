@@ -34,7 +34,7 @@
     <%- include('partials/header') %>
         <section id="resources">
             <h2 class="main-title"> Search Results </h2>
-
+<div class="container">
             <% for (let resource in resources) { %>
                 <div class="card-deck">
                     <div class="card" style="width: 18rem;">
@@ -62,16 +62,16 @@
                             <i class="far fa-star"> 4/5</i>
                         </div>
                     </div>
-
+                    </div>
                     <% } %>
-
-
+              </div>
+<!--
                         <section id="loadMore">
                             <div class="loadMore-btn">
                                 <button type="button" class="btn btn-light">Load more ...</button>
                             </div>
                         </section>
-        </section>
+        </section> -->
         <%- include('partials/footer') %>
             <!-- External JS -->
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"

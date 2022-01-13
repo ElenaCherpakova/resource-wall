@@ -42,7 +42,7 @@
     <%- include('partials/header') %>
     <section id="resources">
       <h2 class="main-title">Latest Resources</h2>
-
+      <div class="container">
       <% for (let resource in resources) { %>
       <div class="card-deck" data-id="<&= resources[resource].id %>">
         <div class="card" style="width: 18rem;">
@@ -85,6 +85,7 @@
         </div>
       </section>
     </section> -->
+  </div>
     <%- include('partials/footer') %>
     <!-- External JS -->
     <script
