@@ -42,7 +42,6 @@
   <body>
 
     <%- include('partials/header') %>
-    <h2>THIS IS COMMENTS PAGE</h2>
     <section id="commentArea">
 
       <section id="resource-commented">
@@ -76,7 +75,6 @@
                 <span><a href="/comments/<%=resources[resource].id %>"><i class="far fa-comment-dots"></i></a></span>
                 <i class="far fa-star"> 4/5</i>
               </div>
-              <!--COMMENTS PART-->
             </div>
           </div>
 
@@ -84,11 +82,11 @@
       </section>
 
       <section id="comment-text-Area">
-        <% for (let comment in comments) { %>
         <div class="container my-5 py-5">
           <div class="row d-flex justify-content-center">
             <div class="col-md-12 col-lg-10 col-xl-8">
               <div class="card">
+                <% for (let comment in comments) { %>
                 <div class="card-body">
                   <div class="d-flex flex-start align-items-center">
                     <div>
@@ -103,6 +101,7 @@
                     <%= comments[comment].comment %>
                   </p>
                 </div>
+                <% } %>
               </div>
             </div>
           </div>
@@ -118,7 +117,7 @@
           ></textarea>
           <label class="form-label" for="commentsText"></label>
           <div class="float p-2">
-            <button type="submit" id="post-comment" class="btn btn-primary btn-sm" resource_id = "<%=comments[comment].resource_id %>">
+            <button type="submit" id="post-comment" class="btn btn-primary btn-sm" resource_id = "<%=resourceID%>">
               Post comment
             </button>
             <button type="button" class="btn btn-outline-primary btn-sm">
@@ -127,7 +126,7 @@
           </div>
         </div>
 
-        <% } %>
+
 
       </section>
 
