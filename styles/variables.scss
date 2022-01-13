@@ -1,0 +1,8 @@
+@mixin flexCenter($direction){
+  display: flex;
+  justify-content: center;
+}
+
+$primary-color: #fff;
+$secondary-color: #000;
+$primary-font-family:Titillium Web;
