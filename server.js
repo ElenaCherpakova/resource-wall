@@ -74,12 +74,24 @@ app.get("/", (req, res) => {
   //added code
 
   db.query(
-    `SELECT resources.*, categories.name AS category_type
-    FROM ((resources
-    INNER JOIN categories_resources ON resources.id = resource_id)
-    INNER JOIN categories ON categories.id = category_id)
-    ORDER BY created_at DESC
-    LIMIT 4;`
+    `SELECT resources.*, categories.name AS category_type, count(likes.*) AS like, avg(ratings.rating) AS rating
+    FROM resources
+    RIGHT JOIN categories_resources ON resources.id = resource_id
+    LEFT JOIN categories ON categories.id = category_id
+    LEFT JOIN likes ON likes.resource_id = resources.id
+    LEFT JOIN ratings ON ratings.resource_id = resources.id
+    GROUP BY resources.id, categories.name
+    ORDER BY resources.created_at DESC
+    LIMIT 4`
+
+    // LEFT JOIN comments ON comments.resource_id = resources.id
+
+    // `SELECT resources.*, categories.name AS category_type
+    // FROM ((resources
+    // INNER JOIN categories_resources ON resources.id = resource_id)
+    // INNER JOIN categories ON categories.id = category_id)
+    // ORDER BY created_at DESC
+    // LIMIT 4;`
   )
     .then((data) => {
       //  const getTag = await db.query(
@@ -89,6 +101,7 @@ app.get("/", (req, res) => {
       //   WHERE resources.id = $1`, [data.rows[0].id] //resource_id is hard coded!
       //   )
       const resources = data.rows;
+      console.log(resources);
       //const tag = getTag.rows[0].name
       const templateVars = { resources };
       console.log("this is templateVars", templateVars);
