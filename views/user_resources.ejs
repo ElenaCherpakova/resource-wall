@@ -41,13 +41,16 @@
      <%  } else { %>
 
     <section id="greeting">
-      <h2 class="main-title"> <b>Hey  <%= userResources[0].user_name %> </b></h2>
+
     </section>
 
     <section id="main-content-resources">
 
       <section id="vertical-list-options">
         <ul class="list-group">
+          <li class="list-group-item">
+            <h1 style="color:black"> Hey  <%= userResources[0].user_name %></h1>  <!-- CHANGE THIS INLINE STYLE-->
+          </li>
           <li class="list-group-item">
             <a href="#created-resources">My resources</a>
           </li>
@@ -61,36 +64,49 @@
 
       <section id="created-resources">
 
-        <h2 class="main-title"> Your resources </h2>
+        <h2 class="main-title"> My resources </h2>
+
 
         <% for (let resource in userResources) { %>
-          <div class="card-deck">
+          <div class="card-deck" data-id="<&= resources[resource].id %>">
             <div class="card" style="width: 18rem;">
               <img class="card-img-top resource-img img-fluid" src="<%= userResources[resource].image %>" alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title text-center"><%= userResources[resource].title%></h5>
                 <div>
                   <p class="card-text"><%= userResources[resource].description %></p>
-                  <p class="card-text"><b>Link: </b><%= userResources[resource].url %></p>
-                  <p class="card-text tag"><b>Tags:</b> <%= userResources[resource].category_type %> </p>
-              </div>
+                  <p class="card-text">
+                    <b>Link: </b><%= userResources[resource].url %>
+                  </p>
+                  <p class="card-text tag">
+                    <b>Tags:</b> <%= userResources[resource].category_type %>
+                  </p>
+                </div>
               </div>
               <div class="card-footer">
-                <i class="far fa-heart"></i>
-                <i class="far fa-comment-dots"></i>
-                <i class="far fa-star"> 4/5</i>
+                <!-- <div>
+                  <span class="likes_id"> <%=userResources[resource].like %> </span>
+                 <i class="far fa-heart" resource_id="<%=userResources[resource].id %>"></i>
+              </div> -->
+               <span><a href="/comments/<%=userResources[resource].id %>"><i class="far fa-comment-dots"></i></a></span>
+                <!-- <i class="far fa-star star" id="<%= userResources[resource].title %>-1" title="<%= userResources[resource].title %>" resource_id="<%=userResources[resource].id %>" data-star="<%= userResources[resource].title %>-1"></i>
+                <i class="far fa-star star" id="<%= userResources[resource].title %>-2" title="<%= userResources[resource].title %>" resource_id="<%=userResources[resource].id %>" data-star="<%= userResources[resource].title %>-2"></i>
+                <i class="far fa-star star" id="<%= userResources[resource].title %>-3" title="<%= userResources[resource].title %>" resource_id="<%=userResources[resource].id %>" data-star="<%= userResources[resource].title %>-3"></i>
+                <i class="far fa-star star" id="<%= userResources[resource].title %>-4" title="<%= userResources[resource].title %>" resource_id="<%=userResources[resource].id %>" data-star="<%= userResources[resource].title %>-4"></i>
+                <i class="far fa-star star" id="<%= userResources[resource].title %>-5" title="<%= userResources[resource].title %>"  resource_id="<%=userResources[resource].id %>" data-star="<%= userResources[resource].title %>-5"></i> -->
               </div>
+
             </div>
 
             <% } %>
 
       </section>
 
-      <section id="loadMore">
+      <!-- <section id="loadMore">
         <div class="loadMore-btn">
           <button type="button" class="btn btn-light">Load more ...</button>
         </div>
-      </section>
+      </section> -->
 
       <section id="liked-resources">
 
@@ -109,9 +125,9 @@
               </div>
               </div>
               <div class="card-footer">
-                <i class="far fa-heart"></i>
-                <i class="far fa-comment-dots"></i>
-                <i class="far fa-star"> 4/5</i>
+                <!-- <i class="far fa-heart"></i> -->
+                <span><a href="/comments/<%=likedResources[resource].id %>"><i class="far fa-comment-dots"></i></a></span>
+                <!-- <i class="far fa-star"> 4/5</i> -->
               </div>
             </div>
 
@@ -119,11 +135,11 @@
 
       </section>
 
-      <section id="loadMore">
+      <!-- <section id="loadMore">
         <div class="loadMore-btn">
           <button type="button" class="btn btn-light">Load more ...</button>
         </div>
-      </section>
+      </section> -->
 
 
 

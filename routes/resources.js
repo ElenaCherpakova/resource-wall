@@ -10,15 +10,17 @@ module.exports = (db) => {
     else {
       const promises = [];
 
-      const promiseOne = db.query(`SELECT resources.*, categories.name AS category_type, users.first_name as user_name
+      const promiseOne = db.query(`
+      SELECT resources.*, categories.name AS category_type, users.first_name as user_name
       FROM (((users INNER JOIN resources ON users.id = user_id)
       INNER JOIN categories_resources ON resources.id = resource_id)
       INNER JOIN categories ON categories.id = category_id)
+
       WHERE users.id= $1
       ORDER BY created_at DESC
-      LIMIT 1;`, [req.session.user_id]);
+      LIMIT 4;`, [req.session.user_id]);
 
-      console.log("this is RPOMISEONE", promiseOne)
+      //console.log("this is RPOMISEONE", promiseOne)
 
       const promiseTwo = db.query(`SELECT r.*, c.name AS category_type
       FROM likes l
@@ -29,12 +31,12 @@ module.exports = (db) => {
       ORDER BY r.created_at DESC
       LIMIT 4;`, [req.session.user_id]);
 
-      console.log("this is RPOMISEtwo", promiseTwo)
+      //console.log("this is RPOMISEtwo", promiseTwo)
 
       promises.push(promiseOne);
       promises.push(promiseTwo);
 
-      console.log("this IS PROMISES", promises)
+      //console.log("this IS PROMISES", promises)
 
       Promise.all(promises)
       .then ((result) => {
@@ -42,9 +44,9 @@ module.exports = (db) => {
         const userResources = result[0].rows;
         const likedResources = result[1].rows;
         const templateVars = {userResources, likedResources};
-        console.log("userResources -->", userResources)
+        //console.log("userResources -->", userResources)
         console.log("likedResources---> ", likedResources)
-        console.log("templateVars", templateVars)
+        //console.log("templateVars", templateVars)
         res.render("user_resources", templateVars);
       })
       .catch((err) => {
