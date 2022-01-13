@@ -38,8 +38,8 @@ module.exports = (db) => {
         .then((result) => {
           const resources = result[0].rows;
           const comments = result[1].rows;
+          console.log("this is comments", Object.keys(comments).length);
           const templateVars = { resources, comments, resourceID };
-         // console.log("this is", templateVars)
           res.render("commentsPage", templateVars);
         })
         .catch((err) => {

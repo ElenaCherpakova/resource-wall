@@ -73,7 +73,13 @@
                   <i class="far fa-heart" resource_id="<%=resources[resource].id %>"></i>
                </div>
                 <span><a href="/comments/<%=resources[resource].id %>"><i class="far fa-comment-dots"></i></a></span>
-                <i class="far fa-star"> 4/5</i>
+
+                <i class="far fa-star star" id="<%= resources[resource].title %>-1" title="<%= resources[resource].title %>" resource_id="<%=resources[resource].id %>" data-star="<%= resources[resource].title %>-1"></i>
+                <i class="far fa-star star" id="<%= resources[resource].title %>-2" title="<%= resources[resource].title %>" resource_id="<%=resources[resource].id %>" data-star="<%= resources[resource].title %>-2"></i>
+                <i class="far fa-star star" id="<%= resources[resource].title %>-3" title="<%= resources[resource].title %>" resource_id="<%=resources[resource].id %>" data-star="<%= resources[resource].title %>-3"></i>
+                <i class="far fa-star star" id="<%= resources[resource].title %>-4" title="<%= resources[resource].title %>" resource_id="<%=resources[resource].id %>" data-star="<%= resources[resource].title %>-4"></i>
+                <i class="far fa-star star" id="<%= resources[resource].title %>-5" title="<%= resources[resource].title %>"  resource_id="<%=resources[resource].id %>" data-star="<%= resources[resource].title %>-5"></i>
+
               </div>
             </div>
           </div>
@@ -86,6 +92,15 @@
           <div class="row d-flex justify-content-center">
             <div class="col-md-12 col-lg-10 col-xl-8">
               <div class="card">
+                <% if (Object.keys(comments).length === 0) {%>
+                  <div class="card-body">
+                    <div class="d-flex flex-start align-items-center">
+                      <div>
+                        <h2 class="fw-bold text-primary mb-1">Be the first one to comment!</h2>
+                      </div>
+                    </div>
+                  </div>
+                <% } else { %>
                 <% for (let comment in comments) { %>
                 <div class="card-body">
                   <div class="d-flex flex-start align-items-center">
@@ -102,32 +117,30 @@
                   </p>
                 </div>
                 <% } %>
+                <% } %>
+              </div>
+            </div>
+
+            <div class="commentSection">
+              <textarea
+              class="form-control"
+              placeholder="Leave your comments"
+              id="commentsText"
+              rows="4"
+              style="background: #fff"
+              ></textarea>
+              <label class="form-label" for="commentsText"></label>
+              <div class="float p-2">
+                <button type="submit" id="post-comment" class="btn btn-primary btn-sm" resource_id = "<%=resourceID%>">
+                  Post comment
+                </button>
+                <button type="button" class="btn btn-outline-primary btn-sm">
+                  Cancel
+                </button>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="commentSection">
-          <textarea
-          class="form-control"
-          placeholder="Leave your comments"
-          id="commentsText"
-          rows="4"
-          style="background: #fff"
-          ></textarea>
-          <label class="form-label" for="commentsText"></label>
-          <div class="float p-2">
-            <button type="submit" id="post-comment" class="btn btn-primary btn-sm" resource_id = "<%=resourceID%>">
-              Post comment
-            </button>
-            <button type="button" class="btn btn-outline-primary btn-sm">
-              Cancel
-            </button>
-          </div>
-        </div>
-
-
-
       </section>
 
     </section>
