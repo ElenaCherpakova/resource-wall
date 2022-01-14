@@ -1,5 +1,5 @@
-INSERT INTO resources (title,description,image,url, user_id) VALUES ('PSQL','wikipedia psql','https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/440px-Postgresql_elephant.svg.png',
+INSERT INTO resources (title,description,image,url, user_id) VALUES ('PSQL','psql is a terminal-based front-end to PostgreSQL. It enables you to type in queries interactively, issue them to PostgreSQL, and see the query results. ','https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/440px-Postgresql_elephant.svg.png',
 'https://en.wikipedia.org/wiki/PostgreSQL',1);
 
-INSERT INTO resources (title,description,image,url, user_id) VALUES ('Lighthouse Labs','Biography and info of LHL','https://www.lighthouselabs.ca/uploads/testimonial/company_logo/32/lighthouselabs.jpg','https://www.lighthouselabs.ca/',2),
-('UFC','The Ultimate Fighting Championship (UFC) is an American mixed martial arts (MMA) promotion company based in Las Vegas, Nevada.','https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/UFC_Logo.svg/2880px-UFC_Logo.svg.png','https://www.ufc.com/',3);
+INSERT INTO resources (title,description,image,url, user_id) VALUES ('Lighthouse Labs','Learning to code is one thing. Becoming a developer is a whole other ball-game. The goal of bootcamps at Lighthouse Labs is to take you from hobbyist to professional developer and be the launchpad for your career.','https://www.lighthouselabs.ca/uploads/testimonial/company_logo/32/lighthouselabs.jpg','https://www.lighthouselabs.ca/',2),
+('UFC','The Ultimate Fighting Championship (UFC) is an American mixed martial arts (MMA) promotion company based in Las Vegas, Nevada.','https://wallpaperaccess.com/full/3842511.jpg','https://www.ufc.com/',3);

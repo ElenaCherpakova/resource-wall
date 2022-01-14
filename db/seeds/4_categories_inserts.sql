@@ -1,1 +1,1 @@
-    INSERT into categories (name) VALUES ('Sports') , ('Science') , ('Movies');
+    INSERT into categories (name) VALUES ('MMA') , ('Computer Science') , ('Bootcamp');
