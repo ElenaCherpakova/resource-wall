@@ -13,13 +13,11 @@
 
 .card {
   @include flexCenter(column);
-  // display: flex;
   padding: 0.5rem;
   margin: 1.5rem;
-  // flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
-  background-color:$primary-color;
+  background-color: $primary-color;
 }
 
 .card:hover {
@@ -43,10 +41,6 @@
   color: #d9d4d1;
 }
 
-// .far{
-//   width: 100%;
-// }
-
 .tag {
   color: gray;
 }
@@ -62,9 +56,7 @@
 .main-title {
   font-weight: bold;
   @include flexCenter(column);
-  // display: flex;
   align-items: center;
-  // flex-direction: column;
   flex-wrap: nowrap;
   font-size: 300%;
   font-family: $primary-font-family;
@@ -82,17 +74,11 @@
   font-size: 200%;
 }
 
-
-
 .active-star {
   color: gold;
 }
 
-
-
-.container{
-  // display:flex;
+.container {
   @include flexCenter(space-evenly);
-  // justify-content:space-evenly;
   flex-wrap: wrap;
 }

@@ -41,7 +41,6 @@ app.use(express.static("public"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/users");
 const loginRoutes = require("./routes/login");
 const addResource = require("./routes/addResource");
 const registerRoutes = require("./routes/register");
@@ -54,7 +53,6 @@ const { query } = require("express");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
 app.use("/", registerRoutes(db));
 app.use("/", addResource(db));
 app.use("/", loginRoutes(db));
@@ -71,8 +69,6 @@ app.use("/", commentsPage(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  console.log("User Id Is : ", req.session["user_id"]);
-
   //query to get all information about the resource
   db.query(
     `SELECT resources.*, categories.name AS category_type, count(likes.*) AS like, avg(ratings.rating) AS rating
@@ -83,22 +79,10 @@ app.get("/", (req, res) => {
     LEFT JOIN ratings ON ratings.resource_id = resources.id
     GROUP BY resources.id, categories.name
     ORDER BY resources.created_at DESC`
-
-    // LEFT JOIN comments ON comments.resource_id = resources.id
-
-    // `SELECT resources.*, categories.name AS category_type
-    // FROM ((resources
-    // INNER JOIN categories_resources ON resources.id = resource_id)
-    // INNER JOIN categories ON categories.id = category_id)
-    // ORDER BY created_at DESC
-    // LIMIT 4;`
   )
     .then((data) => {
       const resources = data.rows;
-      console.log(resources);
-      //const tag = getTag.rows[0].name
       const templateVars = { resources };
-      console.log("this is templateVars", templateVars);
       res.render("index", templateVars);
     })
     .catch((err) => {
@@ -106,10 +90,11 @@ app.get("/", (req, res) => {
     });
 });
 
+// gets the resources made by a specific user
 app.get("/user/:id", (req, res) => {
   res.render("user_resources");
 });
-
+// set session to null when logged out
 app.get("/logout", (req, res) => {
   req.session = null;
   res.redirect("/");
@@ -120,13 +105,16 @@ app.listen(PORT, () => {
 });
 
 app.post("/likes", (req, res) => {
+  // get the users id and the resources id
   const resourceID = req.body["resource_id "]; //dont delete the space
   const user = req.session.user_id;
+  // if user is logged in , check if user has already liked the resource
   if (user) {
     db.query(`SELECT * FROM likes WHERE user_id = $1 AND resource_id = $2;`, [
       user,
       resourceID,
     ]).then((result) => {
+      // if user hasnt liked the resource, insert a like into the database
       if (result.rows.length < 1) {
         return db
           .query(`INSERT INTO likes (user_id , resource_id) VALUES ($1, $2);`, [

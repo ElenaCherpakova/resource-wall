@@ -2,19 +2,18 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = (db) => {
+  // if user is logged in , display the users profile info
   router.get("/profile", (req, res) => {
     if (!req.session.user_id) {
       res.redirect("/login");
     } else {
       db.query(
         `SELECT * FROM users
-        WHERE users.id = $1;`,
+        WHERE users.id = $1`,
         [req.session.user_id]
       )
         .then((result) => {
-          console.log("this IS RESULT", result.rows);
           const selectedUser = result.rows[0];
-          console.log("this user=>", selectedUser);
           const templateVars = { selectedUser };
           res.render("user_profile", templateVars);
         })
@@ -24,6 +23,7 @@ module.exports = (db) => {
     }
   });
 
+  // this route updates the users info in the database with what they entered in the form
   router.post("/profile", (req, res) => {
     const user = {
       firstName: req.body.firstName,
@@ -31,13 +31,6 @@ module.exports = (db) => {
       email: req.body.email,
       password: req.body.password,
     };
-
-    console.log(
-      req.body.firstName,
-      req.body.lastName,
-      req.body.email,
-      req.body.password
-    );
 
     db.query(
       `UPDATE users
@@ -57,7 +50,6 @@ module.exports = (db) => {
     )
 
       .then((result) => {
-        console.log("I GOT HERE");
         res.redirect("/profile");
       })
 

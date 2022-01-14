@@ -34,7 +34,6 @@ module.exports = (db) => {
           ]
         )
         .then((result) => {
-          console.log("result is ", result.rows[0]);
           return result.rows[0];
         })
         .catch((err) => {
@@ -43,11 +42,9 @@ module.exports = (db) => {
     };
 
     const user = req.body;
-    console.log(req.body);
     getUserWithEmail(user.email)
       .then((result) => {
         if (result) {
-          console.log("user already in system");
           return result;
         } else {
           return getUserWithUsername(user.username);
@@ -55,24 +52,16 @@ module.exports = (db) => {
       })
       .then((result) => {
         if (result) {
-          console.log("user already in system");
           res.redirect("/login");
         } else {
           addUser(user).then((user) => {
             if (user) {
-              console.log("user is :", user);
               req.session["user_id"] = user.id;
             }
             res.redirect("/");
           });
         }
       });
-    /*  if (getUserWithEmail(user.email) || getUserWithUsername(user.username)) {
-      console.log("user already in system");
-      res.redirect("/login");
-    } else {
-      addUser(user).then(() => res.redirect("/"));
-      } */
   });
   router.get("/register", (req, res) => {
     res.render("register");

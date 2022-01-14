@@ -50,7 +50,7 @@
       <section id="vertical-list-options">
         <ul class="list-group">
           <li class="list-group-item">
-            <h1 style="color:black"> Hey  <%= userResources[0].user_name %></h1>  <!-- CHANGE THIS INLINE STYLE-->
+            <h1 style="color:black"> Hey  <%= userResources[0].user_name %></h1>  
           </li>
           <li class="list-group-item">
             <a href="#created-resources">My resources</a>
@@ -86,16 +86,7 @@
                 </div>
               </div>
               <div class="card-footer">
-                <!-- <div>
-                  <span class="likes_id"> <%=userResources[resource].like %> </span>
-                 <i class="far fa-heart" resource_id="<%=userResources[resource].id %>"></i>
-              </div> -->
                <span><a href="/comments/<%=userResources[resource].id %>"><i class="far fa-comment-dots"></i></a></span>
-                <!-- <i class="far fa-star star" id="<%= userResources[resource].title %>-1" title="<%= userResources[resource].title %>" resource_id="<%=userResources[resource].id %>" data-star="<%= userResources[resource].title %>-1"></i>
-                <i class="far fa-star star" id="<%= userResources[resource].title %>-2" title="<%= userResources[resource].title %>" resource_id="<%=userResources[resource].id %>" data-star="<%= userResources[resource].title %>-2"></i>
-                <i class="far fa-star star" id="<%= userResources[resource].title %>-3" title="<%= userResources[resource].title %>" resource_id="<%=userResources[resource].id %>" data-star="<%= userResources[resource].title %>-3"></i>
-                <i class="far fa-star star" id="<%= userResources[resource].title %>-4" title="<%= userResources[resource].title %>" resource_id="<%=userResources[resource].id %>" data-star="<%= userResources[resource].title %>-4"></i>
-                <i class="far fa-star star" id="<%= userResources[resource].title %>-5" title="<%= userResources[resource].title %>"  resource_id="<%=userResources[resource].id %>" data-star="<%= userResources[resource].title %>-5"></i> -->
               </div>
 
             </div>
@@ -103,13 +94,6 @@
             <% } %>
 
       </section>
-
-      <!-- <section id="loadMore">
-        <div class="loadMore-btn">
-          <button type="button" class="btn btn-light">Load more ...</button>
-        </div>
-      </section> -->
-
       <section id="liked-resources">
 
         <h2 class="main-title"> Liked resources </h2>
@@ -127,31 +111,17 @@
               </div>
               </div>
               <div class="card-footer">
-                <!-- <i class="far fa-heart"></i> -->
                 <span><a href="/comments/<%=likedResources[resource].id %>"><i class="far fa-comment-dots"></i></a></span>
-                <!-- <i class="far fa-star"> 4/5</i> -->
               </div>
             </div>
 
             <% } %>
 
       </section>
-
-      <!-- <section id="loadMore">
-        <div class="loadMore-btn">
-          <button type="button" class="btn btn-light">Load more ...</button>
-        </div>
-      </section> -->
-
-
-
     </section>
 
       <% } %>
   </section>
-<!-- <div class="resource-footer">
-    <%- include('partials/footer') %>
-   </div> -->
      <!-- External JS -->
 
      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
