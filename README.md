@@ -1,4 +1,7 @@
-# LHL Node Skeleton
+# Pinterest for learners.
+Allow learners to save learning resources like tutorials, blogs and videos in a central place that is publicly available to any user.
+
+
 
 ## Project Setup
 
