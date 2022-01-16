@@ -1,14 +1,15 @@
 # Project Description 
 Pinterest for learners.
 Allow learners to save learning resources like tutorials, blogs and videos in a central place that is publicly available to any user.
-  As a user: 
+ 
+# As a user: 
 •	able to save an external URL along with a title and description;
 •	able to search for already-saved resources created by any user;
 •	able to categorize any resource under a topic
 •	able to comment on any resource
 •	able to rate any resource
 •	able to like any resource
-•	 able to view all their own and all liked resources on one page ("My resources")
+•	able to view all their own and all liked resources on one page ("My resources")
 •	able to register, log in, log out and update their profile
 
 ## Project Setup
