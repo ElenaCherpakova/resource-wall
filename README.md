@@ -1,9 +1,8 @@
 
 ## Resource Wall
 
-This project is a pinterest clone where users can register an account and save resources to their dashboard. Once signed in, users can create resources by giving them a title, description, image url and a category. Users are able to search for resources created by other users and they are able to leave comments, ratings, and likes on any resource. Users also have the ability to update their profile credentials such as email, name, password, and username.
+This project is a pinterest clone built using Node, Express, and PostgreSQL, where users can register an account and save resources to their dashboard. Once signed in, users can create resources by giving them a title, description, image url and a category. Users are able to search for resources created by other users and they are able to leave comments, ratings, and likes on any resource. Users also have the ability to update their profile credentials such as email, name, password, and username.
 
-Resource wall is a full-stack web application built using Node, Express, and PostgreSQL.
 ## Getting Started
 
 1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
