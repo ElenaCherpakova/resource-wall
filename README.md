@@ -1,15 +1,9 @@
-# LHL Node Skeleton
 
-## Project Setup
+## Resource Wall
 
-The following steps are only for _one_ of the group members to perform.
+This project is a pinterest clone where users can register an account and save resources to their dashboard. Once signed in, users can create resources by giving them a title, description, image url and a category. Users are able to search for resources created by other users and they are able to leave comments, ratings, and likes on any resource. Users also have the ability to update their profile credentials such as email, name, password, and username.
 
-1. Create your own copy of this repo using the `Use This Template` button, ideally using the name of your project. The repo should be marked Public
-2. Verify that the skeleton code now shows up in your repo on GitHub, you should be automatically redirected
-3. Clone your copy of the repo to your dev machine
-4. Add your team members as collaborators to the project so that they can push to this repo
-5. Let your team members know the repo URL so that they use the same repo (they should _not_ create a copy/fork of this repo since that will add additional workflow complexity to the project)
-
+Resource wall is a full-stack web application built using Node, Express, and PostgreSQL.
 ## Getting Started
 
 1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
